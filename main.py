@@ -4,6 +4,11 @@ plt.rcParams["figure.figsize"] = (15,10)
 import numpy as np
 import time
 
+#EXPERIMENT
+N_BANDITS = 2000
+N_STEPS = 1000
+ALPHA = [0.05,0.1,0.4]
+
 
 def run_experiment(k=10,n_bandits=500,n_steps=500,alpha=[0.05,0.1,0.4]):
     optimal_action_perc_dict = {}
@@ -22,7 +27,7 @@ def run_experiment(k=10,n_bandits=500,n_steps=500,alpha=[0.05,0.1,0.4]):
     return optimal_action_perc_dict
 
 start_time = time.perf_counter()
-optimal_action_perc_dict = run_experiment(n_bandits=2000,n_steps=1000,alpha=[0.1])
+optimal_action_perc_dict = run_experiment(n_bandits=N_BANDITS,n_steps=N_STEPS,alpha=ALPHA)
 end_time = time.perf_counter()
 
 print(f"Execution time: {end_time - start_time:.6f} seconds")
@@ -36,6 +41,11 @@ for experiment_result_key in optimal_action_perc_dict.keys():
     plt.xlabel("Steps")
     plt.legend();
 
-plt.show()
+#plt.show()
+
+plt.savefig("GradientBandit_Run.svg", format='svg', dpi=300)
+plt.close()  # Close the plot to free memory
+
+print('Plot saved to disk')
 
 
