@@ -68,7 +68,6 @@ class GradientBandit():
     def run_bandit(self):
         o_a_runs = np.zeros((self.n_bandits,self.n_steps))
 
-        print(f"True Q values: {self.q_star_a}")
         for run in range(self.n_bandits):
             self.H_t = np.array([0.0]*self.k)
             o_a_runs[run] = self.one_run()
