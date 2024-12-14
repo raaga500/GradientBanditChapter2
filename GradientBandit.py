@@ -22,7 +22,7 @@ class GradientBandit():
 
 
     def get_reward(self,a):
-        #each reward for the action will come from the prob distribution of that action
+        #1each reward for the action will come from the prob distribution of that action
         #which has a mean of q*(a) and variance of 1
         reward = np.random.normal(self.q_star_a[a],1) 
         return reward
