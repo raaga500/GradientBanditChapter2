@@ -32,7 +32,7 @@ class GradientBandit():
             self.reward_baseline = (self.reward_baseline*(step-1) + reward)/step
         else:
             self.reward_baseline = 0
-        return reward_baseline
+        
     
     def update_numerical_preference(self,selected_action,reward):
         for action in range(self.k):
@@ -40,7 +40,7 @@ class GradientBandit():
                 self.H_t[selected_action] = self.H_t[selected_action] + self.alpha*(reward - self.reward_baseline)*(1-softmax(self.H_t)[selected_action])
             else:
                 self.H_t[action] = self.H_t[action] - self.alpha*(reward - self.reward_baseline)*(softmax(self.H_t)[action])
-        return H_t
+        
 
     def one_step(self,step_num):
         selected_action = self.select_action()
