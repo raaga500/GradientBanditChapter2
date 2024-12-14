@@ -72,6 +72,6 @@ class GradientBandit():
             self.H_t = np.array([0.0]*self.k)
             o_a_runs[run] = self.one_run()
     
-        print(f"num bandits x num steps : {o_a_runs.shape}")
+        #print(f"num bandits x num steps : {o_a_runs.shape}")
         optimal_action_perc = np.mean(o_a_runs,axis=0) * 100
         return optimal_action_perc
